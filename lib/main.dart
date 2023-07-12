@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/services.dart';
@@ -49,7 +51,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
     customVideoPlayerController = CustomVideoPlayerController(
       context: context, videoPlayerController: videoPlayerController,
-      customVideoPlayerSettings:   const CustomVideoPlayerSettings(
+      customVideoPlayerSettings: const CustomVideoPlayerSettings(
+        controlBarDecoration: BoxDecoration(
+          color: Colors.red,
+        ),
+        customVideoPlayerProgressBarSettings: CustomVideoPlayerProgressBarSettings(
+          backgroundColor: Colors.blue,
+          //allowScrubbing: false,
+          bufferedColor: Colors.yellowAccent,
+          progressBarBorderRadius: 1,
+          progressBarHeight: 1,
+          reachableProgressBarPadding: EdgeInsets.all(2)
+        ),
+
         placeholderWidget: Center(child: CircularProgressIndicator(),),
         deviceOrientationsAfterFullscreen: [
           DeviceOrientation.portraitUp,
@@ -129,3 +143,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+
