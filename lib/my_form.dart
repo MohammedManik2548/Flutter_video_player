@@ -102,6 +102,59 @@ class MyForm{
     return FormData.fromMap(data);
   }
 
+  // void downloadPDF() async {
+  //   SharedPreferences p = await SharedPreferences.getInstance();
+  //   var access=p.getString('access_token');
+  //
+  //   String url = Api.reportTrans;
+  //
+  //   Map<String, dynamic> mapData ={
+  //     'registration_no':etControllerReg.text,
+  //     'start_date':etControllerDateFrom.text,
+  //     'end_date':etControllerDateTo.text,
+  //   };
+  //
+  //   debugPrint('$runtimeType HIT_URL1:-$url');
+  //   try {
+  //     await AppConstant.checkInternetConnection().then((value) async{
+  //       if (value == true) {
+  //         EasyLoading.show(status: 'Loading');
+  //
+  //         var  directory = await getApplicationDocumentsDirectory();
+  //         String saveName = "Sandhani_transaction_history-$dateNow.pdf";
+  //         final String filePath = '${directory.path}/$saveName';
+  //         final File file = File(filePath);
+  //         var response = await Dio().post(url,data:mapData,options: Options(
+  //             headers: {
+  //               "Authorization":"Bearer $access"
+  //             },
+  //             responseType: ResponseType.bytes,
+  //             followRedirects: false,
+  //             receiveTimeout: const Duration(seconds:30)
+  //         ));
+  //
+  //         debugPrint('Internet Connected: $runtimeType');
+  //         debugPrint('$runtimeType:->Status Code  ${response.statusCode}');
+  //
+  //         if(response.statusCode==200){
+  //           final raf=file.openSync(mode: FileMode.write);
+  //           raf.writeFromSync(response.data);
+  //           await raf.close();
+  //           EasyLoading.dismiss();
+  //           OpenFile.open(file.path);
+  //         }
+  //
+  //       } else {
+  //         AppConstant.internetConnectionAlertDialog();
+  //       }
+  //     });
+  //   } catch (e, l) {
+  //     AppConstant.internetErrorAlert('Oops!', 'Somethings went wrong');
+  //     EasyLoading.dismiss();
+  //   }
+  //
+  // }
+
   static String singleValueFormat(String v1) {
     double value1 = double.parse(v1.toString());
     String value = NumberFormat.decimalPattern().format(value1);
